@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>EDL Test Point Xiaomi PRO</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Xiaomi EDL Test Point PRO+</title><style>
 
 body{
 font-family:Segoe UI;
@@ -51,10 +51,16 @@ font-weight:bold;
 font-size:16px;
 }
 
-.desc{
+.spec{
 font-size:13px;
 color:#555;
-margin-top:4px;
+margin-top:3px;
+}
+
+.img{
+width:100%;
+border-radius:8px;
+margin-top:8px;
 }
 
 .btn{
@@ -69,67 +75,41 @@ text-decoration:none;
 }
 
 </style></head><body><div class="header">
-EDL Test Point Xiaomi PRO
+Xiaomi EDL Test Point PRO+
 </div><div class="search">
 <input type="text" id="search" placeholder="Cari tipe Xiaomi...">
 </div><div class="container" id="list"></div><script>
 
 const edl=[
 
-{model:"Redmi Note 13 Pro"},
-{model:"Redmi Note 13"},
-{model:"Redmi Note 12"},
-{model:"Redmi Note 12 Pro"},
-{model:"Redmi Note 11"},
-{model:"Redmi Note 11 Pro"},
-{model:"Redmi Note 10"},
-{model:"Redmi Note 10 Pro"},
-{model:"Redmi Note 9"},
-{model:"Redmi Note 9 Pro"},
-{model:"Redmi Note 9S"},
-{model:"Redmi Note 8"},
-{model:"Redmi Note 8 Pro"},
-{model:"Redmi Note 7"},
+{model:"Redmi Note 13 Pro",chip:"Snapdragon 7s Gen2",mode:"EDL 9008"},
+{model:"Redmi Note 12 Pro",chip:"Dimensity 1080",mode:"BROM"},
+{model:"Redmi Note 11",chip:"Snapdragon 680",mode:"EDL 9008"},
+{model:"Redmi Note 10 Pro",chip:"Snapdragon 732G",mode:"EDL 9008"},
+{model:"Redmi Note 9",chip:"Helio G85",mode:"BROM"},
 
-{model:"Redmi 12"},
-{model:"Redmi 11"},
-{model:"Redmi 10"},
-{model:"Redmi 10C"},
-{model:"Redmi 10A"},
-{model:"Redmi 9"},
-{model:"Redmi 9A"},
-{model:"Redmi 9C"},
-{model:"Redmi 8"},
-{model:"Redmi 8A"},
+{model:"Redmi 12",chip:"Helio G88",mode:"BROM"},
+{model:"Redmi 10",chip:"Helio G88",mode:"BROM"},
+{model:"Redmi 9",chip:"Helio G80",mode:"BROM"},
+{model:"Redmi 8",chip:"Snapdragon 439",mode:"EDL 9008"},
 
-{model:"Poco X6 Pro"},
-{model:"Poco X6"},
-{model:"Poco X5 Pro"},
-{model:"Poco X5"},
-{model:"Poco X4 Pro"},
-{model:"Poco X3 Pro"},
-{model:"Poco X3 NFC"},
-{model:"Poco X3 GT"},
+{model:"Poco X6 Pro",chip:"Dimensity 8300",mode:"BROM"},
+{model:"Poco X5 Pro",chip:"Snapdragon 778G",mode:"EDL 9008"},
+{model:"Poco X4 Pro",chip:"Snapdragon 695",mode:"EDL 9008"},
+{model:"Poco X3 Pro",chip:"Snapdragon 860",mode:"EDL 9008"},
 
-{model:"Poco F5"},
-{model:"Poco F4"},
-{model:"Poco F3"},
-{model:"Poco F2 Pro"},
-{model:"Poco F1"},
+{model:"Poco F5",chip:"Snapdragon 7+ Gen2",mode:"EDL 9008"},
+{model:"Poco F4",chip:"Snapdragon 870",mode:"EDL 9008"},
+{model:"Poco F3",chip:"Snapdragon 870",mode:"EDL 9008"},
 
-{model:"Redmi K60"},
-{model:"Redmi K50"},
-{model:"Redmi K40"},
-{model:"Redmi K30"},
-{model:"Redmi K20"},
+{model:"Redmi K60",chip:"Snapdragon 8+ Gen1",mode:"EDL 9008"},
+{model:"Redmi K50",chip:"Dimensity 8100",mode:"BROM"},
+{model:"Redmi K40",chip:"Snapdragon 870",mode:"EDL 9008"},
 
-{model:"Xiaomi 14"},
-{model:"Xiaomi 13"},
-{model:"Xiaomi 12"},
-{model:"Xiaomi 11"},
-{model:"Xiaomi 11T"},
-{model:"Xiaomi Mi 10"},
-{model:"Xiaomi Mi 9"}
+{model:"Xiaomi 14",chip:"Snapdragon 8 Gen3",mode:"EDL 9008"},
+{model:"Xiaomi 13",chip:"Snapdragon 8 Gen2",mode:"EDL 9008"},
+{model:"Xiaomi 12",chip:"Snapdragon 8 Gen1",mode:"EDL 9008"},
+{model:"Xiaomi 11",chip:"Snapdragon 888",mode:"EDL 9008"}
 
 ];
 
@@ -148,9 +128,17 @@ container.innerHTML+=`
 
 <div class="model">${e.model}</div>
 
-<div class="desc">
-Klik tombol untuk melihat lokasi test point motherboard
-</div>
+<div class="spec">Chipset : ${e.chip}</div>
+
+<div class="spec">Mode : ${e.mode}</div>
+
+<a target="_blank"
+href="https://www.google.com/search?q=${query}&tbm=isch">
+
+<img class="img"
+src="https://via.placeholder.com/600x300?text=${e.model.replace(/ /g,"+")}+Test+Point">
+
+</a>
 
 <a class="btn" target="_blank"
 href="https://www.google.com/search?q=${query}&tbm=isch">
