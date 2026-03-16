@@ -20,6 +20,8 @@ background:#f2f4f7;
 transition:0.3s;
 }
 
+/* DARK MODE */
+
 .dark{
 background:#121212;
 color:white;
@@ -38,11 +40,8 @@ font-weight:bold;
 font-size:18px;
 }
 
-/* DARK BUTTON */
-
 .dark-btn{
 cursor:pointer;
-font-size:14px;
 }
 
 /* SEARCH */
@@ -55,11 +54,11 @@ margin:auto;
 
 .search input{
 width:100%;
-padding:10px;
-border-radius:8px;
+padding:12px;
+border-radius:10px;
 border:none;
 outline:none;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
+box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
 
 /* CONTAINER */
@@ -76,18 +75,18 @@ padding:20px;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:18px;
-padding:10px;
 }
-/* BRAND */
+
+/* BRAND CARD */
 
 .brand{
 background:white;
-padding:22px 10px;
+padding:25px 10px;
 border-radius:18px;
 text-align:center;
 cursor:pointer;
 font-weight:600;
-font-size:15px;
+font-size:16px;
 box-shadow:0 6px 18px rgba(0,0,0,0.15);
 transition:0.2s;
 
@@ -100,33 +99,26 @@ gap:8px;
 text-decoration:none;
 color:black;
 }
+
 .brand:hover{
 transform:scale(1.05);
 background:#0d6efd;
 color:white;
 }
 
-.brand img{
-width:35px;
-display:block;
-margin:auto;
-margin-bottom:6px;
-}
-.brand{
-text-decoration:none;
-color:inherit;
-}
 .brand:active{
 transform:scale(0.95);
-background:#0d6efd;
-color:white;
 }
-.brand span{
+
+.icon{
 font-size:28px;
 }
-@media (min-width:900px){
 
-@media (min-width:900px){
+.name{
+font-size:16px;
+}
+
+/* DESKTOP MODE */
 
 @media (min-width:900px){
 
@@ -136,18 +128,6 @@ grid-template-columns:repeat(6,1fr);
 
 }
 
-.brand{
-padding:20px;
-font-size:16px;
-}
-.icon{
-font-size:28px;
-}
-
-.name{
-font-size:16px;
-}
-}
 /* FOOTER */
 
 .footer{
@@ -163,11 +143,8 @@ color:#777;
 <body>
 
 <div class="header">
-
 Kode Rahasia Handphone
-
 <div class="dark-btn" onclick="darkMode()">🌙</div>
-
 </div>
 
 <div class="search">
@@ -207,22 +184,51 @@ Kode Rahasia Handphone
 <span class="icon">📱</span>
 <span class="name">Infinix</span>
 </a>
+
+<a href="tecno.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Tecno</span>
+</a>
+
+<a href="huawei.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Huawei</span>
+</a>
+
+<a href="asus.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Asus</span>
+</a>
+
+<a href="sony.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Sony</span>
+</a>
+
+<a href="nokia.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Nokia</span>
+</a>
+
+<a href="motorola.html" class="brand">
+<span class="icon">📱</span>
+<span class="name">Motorola</span>
+</a>
+
 </div>
 
 <div class="footer">
-
 Database kode rahasia teknisi handphone
-
 </div>
 
 </div>
 
 <script>
 
+/* DARK MODE */
+
 function darkMode(){
-
 document.body.classList.toggle("dark");
-
 }
 
 /* SEARCH */
@@ -239,7 +245,7 @@ brands.forEach(function(item){
 let text = item.innerText.toLowerCase();
 
 if(text.includes(filter)){
-item.style.display="block";
+item.style.display="flex";
 }else{
 item.style.display="none";
 }
