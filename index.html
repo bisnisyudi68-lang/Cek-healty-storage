@@ -3,44 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secret Code HP</title>
+
+<title>Kode Rahasia Handphone</title>
 
 <style>
 
-body{
-font-family:Arial, sans-serif;
-background:#f4f6f9;
+*{
 margin:0;
-padding:20px;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial;
 }
 
-h1{
-text-align:center;
-margin-bottom:30px;
-}
-
-.brand-list{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:15px;
-max-width:800px;
-margin:auto;
-}
-
-.brand{
-background:white;
-padding:18px;
-text-align:center;
-border-radius:10px;
-font-weight:bold;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-cursor:pointer;
+body{
+background:#f2f4f7;
 transition:0.3s;
 }
 
-.brand:hover{
-background:#007bff;
+.dark{
+background:#121212;
 color:white;
+}
+
+/* HEADER */
+
+.header{
+background:#0d6efd;
+color:white;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:bold;
+font-size:18px;
+}
+
+/* DARK BUTTON */
+
+.dark-btn{
+cursor:pointer;
+font-size:14px;
+}
+
+/* SEARCH */
+
+.search{
+padding:15px;
+max-width:700px;
+margin:auto;
+}
+
+.search input{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:none;
+outline:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* CONTAINER */
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+}
+
+/* BRAND */
+
+.brand{
+background:white;
+padding:15px;
+border-radius:12px;
+text-align:center;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 3px 10px rgba(0,0,0,0.15);
+transition:0.25s;
+}
+
+.brand:hover{
+transform:scale(1.05);
+background:#0d6efd;
+color:white;
+}
+
+.brand img{
+width:35px;
+display:block;
+margin:auto;
+margin-bottom:6px;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+margin-top:30px;
+font-size:13px;
+color:#777;
 }
 
 </style>
@@ -48,27 +118,88 @@ color:white;
 
 <body>
 
-<h1>Secret Code HP</h1>
+<div class="header">
 
-<div class="brand-list">
+Kode Rahasia Handphone
 
-<div class="brand">Samsung</div>
-<div class="brand">Xiaomi</div>
-<div class="brand">Vivo</div>
-<div class="brand">Oppo</div>
-<div class="brand">Realme</div>
-<div class="brand">Infinix</div>
-<div class="brand">Tecno</div>
-<div class="brand">Huawei</div>
-<div class="brand">Honor</div>
-<div class="brand">Asus</div>
-<div class="brand">Lenovo</div>
-<div class="brand">Sony</div>
-<div class="brand">Nokia</div>
-<div class="brand">Google Pixel</div>
-<div class="brand">Motorola</div>
+<div class="dark-btn" onclick="darkMode()">🌙</div>
 
 </div>
+
+<div class="search">
+<input type="text" id="search" placeholder="Cari brand handphone...">
+</div>
+
+<div class="container">
+
+<div class="grid" id="grid">
+
+<div class="brand"><img src="https://logo.clearbit.com/samsung.com">Samsung</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/mi.com">Xiaomi</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/vivo.com">Vivo</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/oppo.com">Oppo</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/realme.com">Realme</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/infinixmobility.com">Infinix</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/tecno-mobile.com">Tecno</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/huawei.com">Huawei</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/asus.com">Asus</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/sony.com">Sony</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/nokia.com">Nokia</div>
+
+<div class="brand"><img src="https://logo.clearbit.com/motorola.com">Motorola</div>
+
+</div>
+
+<div class="footer">
+
+Database kode rahasia teknisi handphone
+
+</div>
+
+</div>
+
+<script>
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+/* SEARCH */
+
+const search = document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+let filter = search.value.toLowerCase();
+let brands = document.querySelectorAll(".brand");
+
+brands.forEach(function(item){
+
+let text = item.innerText.toLowerCase();
+
+if(text.includes(filter)){
+item.style.display="block";
+}else{
+item.style.display="none";
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
