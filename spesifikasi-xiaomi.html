@@ -1,0 +1,770 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Database Spesifikasi Xiaomi PRO</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:14px;
+margin-bottom:14px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.img{
+width:100%;
+border-radius:10px;
+margin-bottom:8px;
+}
+
+.model{
+font-weight:bold;
+font-size:16px;
+color:#ff6900;
+}
+
+.row{
+font-size:13px;
+margin-top:3px;
+}
+
+.label{
+font-weight:bold;
+}
+
+</style></head><body><div class="header">
+Database Spesifikasi Xiaomi PRO
+</div><div class="search">
+<input type="text" id="search" placeholder="Cari tipe Xiaomi...">
+</div><div class="container" id="list"></div><script>
+
+const phones=[
+
+{
+model:"Redmi Note 13 Pro",
+chip:"Snapdragon 7s Gen2",
+ram:"8GB / 12GB",
+storage:"256GB / 512GB",
+kamera:"200MP",
+baterai:"5100mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Redmi Note 12 Pro",
+chip:"Dimensity 1080",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Redmi Note 11",
+chip:"Snapdragon 680",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.43 AMOLED 90Hz",
+android:"Android 11 / MIUI 13"
+},
+
+{
+model:"Redmi Note 10 Pro",
+chip:"Snapdragon 732G",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB",
+kamera:"108MP",
+baterai:"5020mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 11 / MIUI 12"
+},
+
+{
+model:"Poco X6 Pro",
+chip:"Dimensity 8300",
+ram:"12GB",
+storage:"256GB / 512GB",
+kamera:"64MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 14 / HyperOS"
+},
+
+{
+model:"Poco X5 Pro",
+chip:"Snapdragon 778G",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 14"
+},
+
+{
+model:"Poco X3 Pro",
+chip:"Snapdragon 860",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"48MP",
+baterai:"5160mAh",
+layar:"6.67 IPS 120Hz",
+android:"Android 11 / MIUI 12"
+},
+
+{
+model:"Xiaomi 13",
+chip:"Snapdragon 8 Gen2",
+ram:"8GB / 12GB",
+storage:"256GB / 512GB",
+kamera:"50MP Leica",
+baterai:"4500mAh",
+layar:"6.36 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Xiaomi 12",
+chip:"Snapdragon 8 Gen1",
+ram:"8GB / 12GB",
+storage:"128GB / 256GB",
+kamera:"50MP",
+baterai:"4500mAh",
+layar:"6.28 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Redmi 10",
+chip:"Helio G88",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.5 IPS 90Hz",
+android:"Android 11 / MIUI 12"
+}, 
+/* TAMBAHAN SPESIFIKASI XIAOMI */
+
+{
+model:"Redmi Note 13",
+chip:"Dimensity 6080",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Redmi Note 13 Pro+",
+chip:"Dimensity 7200",
+ram:"12GB",
+storage:"256GB / 512GB",
+kamera:"200MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 13 / HyperOS"
+},
+
+{
+model:"Redmi Note 12",
+chip:"Snapdragon 685",
+ram:"4GB / 6GB",
+storage:"128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Redmi Note 11 Pro",
+chip:"Helio G96",
+ram:"6GB / 8GB",
+storage:"128GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 11 / MIUI 13"
+},
+
+{
+model:"Redmi Note 9",
+chip:"Helio G85",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"48MP",
+baterai:"5020mAh",
+layar:"6.53 IPS",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Redmi 12",
+chip:"Helio G88",
+ram:"4GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.79 IPS 90Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Redmi 11",
+chip:"Helio G88",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.5 IPS 90Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Redmi 10C",
+chip:"Snapdragon 680",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.71 IPS",
+android:"Android 11 / MIUI 13"
+},
+
+{
+model:"Poco X6",
+chip:"Snapdragon 7s Gen2",
+ram:"8GB / 12GB",
+storage:"256GB",
+kamera:"64MP",
+baterai:"5100mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 14 / HyperOS"
+},
+
+{
+model:"Poco X4 Pro",
+chip:"Snapdragon 695",
+ram:"6GB / 8GB",
+storage:"128GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 11 / MIUI 13"
+},
+
+{
+model:"Poco F5",
+chip:"Snapdragon 7+ Gen2",
+ram:"12GB",
+storage:"256GB",
+kamera:"64MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Poco F4",
+chip:"Snapdragon 870",
+ram:"8GB / 12GB",
+storage:"256GB",
+kamera:"64MP",
+baterai:"4500mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Xiaomi 14",
+chip:"Snapdragon 8 Gen3",
+ram:"12GB",
+storage:"256GB / 512GB",
+kamera:"50MP Leica",
+baterai:"4610mAh",
+layar:"6.36 AMOLED 120Hz",
+android:"Android 14 / HyperOS"
+},
+
+{
+model:"Xiaomi 13 Pro",
+chip:"Snapdragon 8 Gen2",
+ram:"12GB",
+storage:"256GB / 512GB",
+kamera:"50MP Leica",
+baterai:"4820mAh",
+layar:"6.73 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Xiaomi 11T Pro",
+chip:"Snapdragon 888",
+ram:"8GB / 12GB",
+storage:"256GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 11 / MIUI 12"
+}, 
+/* TAMBAHAN SPESIFIKASI XIAOMI 2 */
+
+{
+model:"Redmi Note 10",
+chip:"Snapdragon 678",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"48MP",
+baterai:"5000mAh",
+layar:"6.43 AMOLED",
+android:"Android 11 / MIUI 12"
+},
+
+{
+model:"Redmi Note 10S",
+chip:"Helio G95",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB",
+kamera:"64MP",
+baterai:"5000mAh",
+layar:"6.43 AMOLED",
+android:"Android 11 / MIUI 12"
+},
+
+{
+model:"Redmi Note 9 Pro",
+chip:"Snapdragon 720G",
+ram:"6GB",
+storage:"64GB / 128GB",
+kamera:"64MP",
+baterai:"5020mAh",
+layar:"6.67 IPS",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Redmi Note 8 Pro",
+chip:"Helio G90T",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB",
+kamera:"64MP",
+baterai:"4500mAh",
+layar:"6.53 IPS",
+android:"Android 9 / MIUI 11"
+},
+
+{
+model:"Redmi Note 8",
+chip:"Snapdragon 665",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"48MP",
+baterai:"4000mAh",
+layar:"6.3 IPS",
+android:"Android 9 / MIUI 11"
+},
+
+{
+model:"Redmi 9",
+chip:"Helio G80",
+ram:"3GB / 4GB",
+storage:"32GB / 64GB",
+kamera:"13MP",
+baterai:"5020mAh",
+layar:"6.53 IPS",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Redmi 8",
+chip:"Snapdragon 439",
+ram:"3GB / 4GB",
+storage:"32GB / 64GB",
+kamera:"12MP",
+baterai:"5000mAh",
+layar:"6.22 IPS",
+android:"Android 9 / MIUI 11"
+},
+
+{
+model:"Redmi 8A",
+chip:"Snapdragon 439",
+ram:"2GB / 3GB",
+storage:"32GB",
+kamera:"12MP",
+baterai:"5000mAh",
+layar:"6.22 IPS",
+android:"Android 9 / MIUI 11"
+},
+
+{
+model:"Poco M6 Pro",
+chip:"Helio G99",
+ram:"8GB",
+storage:"256GB",
+kamera:"64MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 13 / MIUI 14"
+},
+
+{
+model:"Poco M5",
+chip:"Helio G99",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"50MP",
+baterai:"5000mAh",
+layar:"6.58 IPS",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Poco M4 Pro",
+chip:"Helio G96",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"64MP",
+baterai:"5000mAh",
+layar:"6.43 AMOLED",
+android:"Android 11 / MIUI 13"
+},
+
+{
+model:"Poco M3",
+chip:"Snapdragon 662",
+ram:"4GB / 6GB",
+storage:"64GB / 128GB",
+kamera:"48MP",
+baterai:"6000mAh",
+layar:"6.53 IPS",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Xiaomi 12T",
+chip:"Dimensity 8100",
+ram:"8GB",
+storage:"256GB",
+kamera:"108MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Xiaomi 12T Pro",
+chip:"Snapdragon 8+ Gen1",
+ram:"12GB",
+storage:"256GB",
+kamera:"200MP",
+baterai:"5000mAh",
+layar:"6.67 AMOLED 120Hz",
+android:"Android 12 / MIUI 13"
+},
+
+{
+model:"Xiaomi 11 Lite",
+chip:"Snapdragon 732G",
+ram:"6GB / 8GB",
+storage:"128GB",
+kamera:"64MP",
+baterai:"4250mAh",
+layar:"6.55 AMOLED",
+android:"Android 11 / MIUI 12"
+}, 
+/* TAMBAHAN SPESIFIKASI XIAOMI 3 */
+
+{
+model:"Redmi Note 7",
+chip:"Snapdragon 660",
+ram:"3GB / 4GB / 6GB",
+storage:"32GB / 64GB / 128GB",
+kamera:"48MP",
+baterai:"4000mAh",
+layar:"6.3 IPS",
+android:"Android 9 / MIUI 10"
+},
+
+{
+model:"Redmi Note 6 Pro",
+chip:"Snapdragon 636",
+ram:"4GB / 6GB",
+storage:"64GB",
+kamera:"12MP",
+baterai:"4000mAh",
+layar:"6.26 IPS",
+android:"Android 8 / MIUI 10"
+},
+
+{
+model:"Redmi Note 5 Pro",
+chip:"Snapdragon 636",
+ram:"4GB / 6GB",
+storage:"64GB",
+kamera:"12MP",
+baterai:"4000mAh",
+layar:"5.99 IPS",
+android:"Android 7 / MIUI 9"
+},
+
+{
+model:"Redmi Note 4",
+chip:"Snapdragon 625",
+ram:"3GB / 4GB",
+storage:"32GB / 64GB",
+kamera:"13MP",
+baterai:"4100mAh",
+layar:"5.5 IPS",
+android:"Android 6 / MIUI 8"
+},
+
+{
+model:"Redmi 7A",
+chip:"Snapdragon 439",
+ram:"2GB / 3GB",
+storage:"16GB / 32GB",
+kamera:"12MP",
+baterai:"4000mAh",
+layar:"5.45 IPS",
+android:"Android 9 / MIUI 10"
+},
+
+{
+model:"Redmi 6",
+chip:"Helio P22",
+ram:"3GB / 4GB",
+storage:"32GB / 64GB",
+kamera:"12MP",
+baterai:"3000mAh",
+layar:"5.45 IPS",
+android:"Android 8 / MIUI 9"
+},
+
+{
+model:"Redmi 6A",
+chip:"Helio A22",
+ram:"2GB / 3GB",
+storage:"16GB / 32GB",
+kamera:"13MP",
+baterai:"3000mAh",
+layar:"5.45 IPS",
+android:"Android 8 / MIUI 9"
+},
+
+{
+model:"Redmi 5",
+chip:"Snapdragon 450",
+ram:"2GB / 3GB",
+storage:"16GB / 32GB",
+kamera:"12MP",
+baterai:"3300mAh",
+layar:"5.7 IPS",
+android:"Android 7 / MIUI 9"
+},
+
+{
+model:"Redmi 5A",
+chip:"Snapdragon 425",
+ram:"2GB / 3GB",
+storage:"16GB / 32GB",
+kamera:"13MP",
+baterai:"3000mAh",
+layar:"5 IPS",
+android:"Android 7 / MIUI 9"
+},
+
+{
+model:"Poco F2 Pro",
+chip:"Snapdragon 865",
+ram:"6GB / 8GB",
+storage:"128GB / 256GB",
+kamera:"64MP",
+baterai:"4700mAh",
+layar:"6.67 AMOLED",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Poco F1",
+chip:"Snapdragon 845",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB / 256GB",
+kamera:"12MP",
+baterai:"4000mAh",
+layar:"6.18 IPS",
+android:"Android 8 / MIUI 9"
+},
+
+{
+model:"Poco X2",
+chip:"Snapdragon 730G",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB / 256GB",
+kamera:"64MP",
+baterai:"4500mAh",
+layar:"6.67 IPS 120Hz",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Poco X3 NFC",
+chip:"Snapdragon 732G",
+ram:"6GB",
+storage:"64GB / 128GB",
+kamera:"64MP",
+baterai:"5160mAh",
+layar:"6.67 IPS 120Hz",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Xiaomi Mi 10",
+chip:"Snapdragon 865",
+ram:"8GB / 12GB",
+storage:"128GB / 256GB",
+kamera:"108MP",
+baterai:"4780mAh",
+layar:"6.67 AMOLED 90Hz",
+android:"Android 10 / MIUI 12"
+},
+
+{
+model:"Xiaomi Mi 9",
+chip:"Snapdragon 855",
+ram:"6GB / 8GB",
+storage:"64GB / 128GB",
+kamera:"48MP",
+baterai:"3300mAh",
+layar:"6.39 AMOLED",
+android:"Android 9 / MIUI 10"
+}, 
+/* TAMBAHAN SPESIFIKASI XIAOMI 4 */
+
+{model:"Redmi Note 13T",chip:"Dimensity 6080",ram:"8GB",storage:"256GB",kamera:"108MP",baterai:"5000mAh",layar:"6.67 AMOLED 120Hz",android:"Android 13 / HyperOS"},
+{model:"Redmi Note 12T",chip:"Dimensity 8200",ram:"8GB / 12GB",storage:"256GB",kamera:"64MP",baterai:"5080mAh",layar:"6.67 IPS 144Hz",android:"Android 13 / MIUI 14"},
+{model:"Redmi Note 11T",chip:"Dimensity 810",ram:"6GB / 8GB",storage:"128GB",kamera:"50MP",baterai:"5000mAh",layar:"6.6 IPS 90Hz",android:"Android 11 / MIUI 13"},
+
+{model:"Redmi 13",chip:"Helio G91",ram:"6GB / 8GB",storage:"128GB / 256GB",kamera:"108MP",baterai:"5030mAh",layar:"6.79 IPS 90Hz",android:"Android 14 / HyperOS"},
+{model:"Redmi 12C",chip:"Helio G85",ram:"4GB / 6GB",storage:"64GB / 128GB",kamera:"50MP",baterai:"5000mAh",layar:"6.71 IPS",android:"Android 12 / MIUI 13"},
+{model:"Redmi 11A",chip:"Helio G36",ram:"4GB",storage:"64GB",kamera:"50MP",baterai:"5000mAh",layar:"6.52 IPS",android:"Android 12 / MIUI 13"},
+
+{model:"Poco C65",chip:"Helio G85",ram:"6GB / 8GB",storage:"128GB / 256GB",kamera:"50MP",baterai:"5000mAh",layar:"6.74 IPS 90Hz",android:"Android 13 / MIUI 14"},
+{model:"Poco C55",chip:"Helio G85",ram:"4GB / 6GB",storage:"64GB / 128GB",kamera:"50MP",baterai:"5000mAh",layar:"6.71 IPS",android:"Android 12 / MIUI 13"},
+{model:"Poco C50",chip:"Helio A22",ram:"2GB / 3GB",storage:"32GB",kamera:"8MP",baterai:"5000mAh",layar:"6.52 IPS",android:"Android 12 Go"},
+
+{model:"Poco M6",chip:"Dimensity 6100+",ram:"6GB / 8GB",storage:"128GB",kamera:"50MP",baterai:"5000mAh",layar:"6.74 IPS 90Hz",android:"Android 13"},
+{model:"Poco M4 5G",chip:"Dimensity 700",ram:"4GB / 6GB",storage:"64GB / 128GB",kamera:"13MP",baterai:"5000mAh",layar:"6.58 IPS 90Hz",android:"Android 12"},
+{model:"Poco M3 Pro",chip:"Dimensity 700",ram:"4GB / 6GB",storage:"64GB / 128GB",kamera:"48MP",baterai:"5000mAh",layar:"6.5 IPS 90Hz",android:"Android 11"},
+
+{model:"Poco X3 GT",chip:"Dimensity 1100",ram:"8GB",storage:"128GB / 256GB",kamera:"64MP",baterai:"5000mAh",layar:"6.6 IPS 120Hz",android:"Android 11"},
+{model:"Poco X4 GT",chip:"Dimensity 8100",ram:"8GB",storage:"128GB / 256GB",kamera:"64MP",baterai:"5080mAh",layar:"6.6 IPS 144Hz",android:"Android 12"},
+
+{model:"Redmi K20",chip:"Snapdragon 730",ram:"6GB",storage:"64GB / 128GB",kamera:"48MP",baterai:"4000mAh",layar:"6.39 AMOLED",android:"Android 9"},
+{model:"Redmi K20 Pro",chip:"Snapdragon 855",ram:"6GB / 8GB",storage:"128GB / 256GB",kamera:"48MP",baterai:"4000mAh",layar:"6.39 AMOLED",android:"Android 9"},
+{model:"Redmi K30",chip:"Snapdragon 730G",ram:"6GB / 8GB",storage:"128GB",kamera:"64MP",baterai:"4500mAh",layar:"6.67 IPS 120Hz",android:"Android 10"},
+{model:"Redmi K30 Pro",chip:"Snapdragon 865",ram:"8GB",storage:"128GB / 256GB",kamera:"64MP",baterai:"4700mAh",layar:"6.67 AMOLED",android:"Android 10"},
+{model:"Redmi K40",chip:"Snapdragon 870",ram:"6GB / 8GB / 12GB",storage:"128GB / 256GB",kamera:"48MP",baterai:"4520mAh",layar:"6.67 AMOLED 120Hz",android:"Android 11"},
+{model:"Redmi K50",chip:"Dimensity 8100",ram:"8GB / 12GB",storage:"128GB / 256GB",kamera:"48MP",baterai:"5500mAh",layar:"6.67 AMOLED 120Hz",android:"Android 12"},
+{model:"Redmi K60",chip:"Snapdragon 8+ Gen1",ram:"12GB / 16GB",storage:"256GB / 512GB",kamera:"64MP",baterai:"5500mAh",layar:"6.67 AMOLED 120Hz",android:"Android 13"},
+
+{model:"Xiaomi Mix 2",chip:"Snapdragon 835",ram:"6GB",storage:"64GB / 128GB",kamera:"12MP",baterai:"3400mAh",layar:"5.99 IPS",android:"Android 7"},
+{model:"Xiaomi Mix 2S",chip:"Snapdragon 845",ram:"6GB / 8GB",storage:"64GB / 128GB / 256GB",kamera:"12MP",baterai:"3400mAh",layar:"5.99 IPS",android:"Android 8"},
+{model:"Xiaomi Mix 3",chip:"Snapdragon 845",ram:"6GB / 8GB",storage:"128GB / 256GB",kamera:"12MP",baterai:"3200mAh",layar:"6.39 AMOLED",android:"Android 9"},
+
+{model:"Xiaomi Pad 5",chip:"Snapdragon 860",ram:"6GB",storage:"128GB / 256GB",kamera:"13MP",baterai:"8720mAh",layar:"11 IPS 120Hz",android:"Android 11"},
+{model:"Xiaomi Pad 6",chip:"Snapdragon 870",ram:"6GB / 8GB",storage:"128GB / 256GB",kamera:"13MP",baterai:"8840mAh",layar:"11 IPS 144Hz",android:"Android 13"},
+{model:"Xiaomi Pad 6 Pro",chip:"Snapdragon 8+ Gen1",ram:"8GB / 12GB",storage:"256GB / 512GB",kamera:"50MP",baterai:"8600mAh",layar:"11 IPS 144Hz",android:"Android 13"}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(p=>{
+
+let img="https://source.unsplash.com/600x300/?smartphone";
+
+container.innerHTML+=`
+
+<div class="card">
+
+<img class="img" src="${img}">
+
+<div class="model">${p.model}</div>
+
+<div class="row"><span class="label">Chipset :</span> ${p.chip}</div>
+<div class="row"><span class="label">RAM :</span> ${p.ram}</div>
+<div class="row"><span class="label">Storage :</span> ${p.storage}</div>
+<div class="row"><span class="label">Kamera :</span> ${p.kamera}</div>
+<div class="row"><span class="label">Baterai :</span> ${p.baterai}</div>
+<div class="row"><span class="label">Layar :</span> ${p.layar}</div>
+<div class="row"><span class="label">Android :</span> ${p.android}</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(phones);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=phones.filter(p=>p.model.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script></body>
+</html>
