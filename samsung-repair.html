@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Analisa Perbaikan Samsung</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Analisa Repair Samsung PRO</title><style>
 
 body{
 font-family:Segoe UI;
@@ -41,7 +41,7 @@ padding:0 20px 40px;
 .card{
 background:white;
 border-radius:12px;
-padding:15px;
+padding:16px;
 margin-bottom:12px;
 box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
@@ -52,93 +52,144 @@ font-size:16px;
 margin-bottom:6px;
 }
 
-.detail{
+.diagnosa{
+color:#d32f2f;
 font-size:13px;
-color:#444;
-margin-top:4px;
+margin-top:5px;
+}
+
+.perbaikan{
+color:#2e7d32;
+font-size:13px;
+margin-top:5px;
 }
 
 </style></head><body><div class="header">
-Analisa Perbaikan Samsung
+Analisa Repair Samsung PRO
 </div><div class="search">
-<input type="text" id="search" placeholder="Cari kerusakan...">
+<input type="text" id="search" placeholder="Cari kerusakan teknisi...">
 </div><div class="container" id="list"></div><script>
 
-const kerusakan=[
+const repair=[
 
 {
 judul:"HP Mati Total",
-detail:"Penyebab: IC Power rusak, short di jalur Vbat, baterai mati. Solusi: cek arus dengan power supply, cek jalur Vbat, ganti IC Power."
+diagnosa:"Cek arus PSU. Jika 0.00 kemungkinan jalur power putus. Jika short kemungkinan IC Power rusak.",
+perbaikan:"Cek jalur Vbat, cek kapasitor short, reball atau ganti IC Power."
 },
 
 {
-judul:"Bootloop / Restart Terus",
-detail:"Penyebab: firmware rusak, eMMC bad sector. Solusi: flash firmware ulang atau ganti eMMC."
+judul:"Short Motherboard",
+diagnosa:"PSU menunjukkan arus tinggi tanpa menekan tombol power.",
+perbaikan:"Cari kapasitor short menggunakan thermal atau alkohol lalu ganti."
+},
+
+{
+judul:"Bootloop Samsung",
+diagnosa:"HP berhenti di logo Samsung.",
+perbaikan:"Flash firmware Odin atau cek eMMC."
+},
+
+{
+judul:"eMMC Rusak",
+diagnosa:"HP bootloop atau tidak bisa diflash.",
+perbaikan:"Reprogram eMMC atau ganti eMMC."
 },
 
 {
 judul:"Tidak Bisa Charging",
-detail:"Penyebab: konektor charger rusak, IC charging rusak. Solusi: ganti konektor charger atau cek IC charging."
+diagnosa:"HP tidak mengisi baterai.",
+perbaikan:"Cek konektor charger, jalur VBUS, IC charging."
 },
 
 {
 judul:"Sinyal Hilang",
-detail:"Penyebab: IMEI null, baseband error, IC RF rusak. Solusi: repair IMEI atau cek IC RF."
+diagnosa:"IMEI null atau baseband unknown.",
+perbaikan:"Repair IMEI atau cek IC RF."
 },
 
 {
 judul:"Wifi Tidak Aktif",
-detail:"Penyebab: IC Wifi rusak atau firmware error. Solusi: flash firmware atau ganti IC wifi."
+diagnosa:"Wifi tidak bisa dihidupkan.",
+perbaikan:"Flash firmware atau ganti IC Wifi."
 },
 
 {
-judul:"Bluetooth Tidak Berfungsi",
-detail:"Penyebab: IC wifi/bluetooth rusak. Solusi: reball atau ganti IC."
+judul:"Bluetooth Error",
+diagnosa:"Bluetooth tidak bisa aktif.",
+perbaikan:"Reball IC wifi/bluetooth."
 },
 
 {
-judul:"Layar Gelap / Blank",
-detail:"Penyebab: LCD rusak, IC display rusak, jalur backlight putus."
+judul:"Layar Gelap",
+diagnosa:"LCD menyala tapi tidak ada backlight.",
+perbaikan:"Cek jalur backlight atau IC backlight."
 },
 
 {
-judul:"Touchscreen Tidak Berfungsi",
-detail:"Penyebab: digitizer rusak atau IC touch error."
+judul:"Touchscreen Error",
+diagnosa:"Touch tidak respon.",
+perbaikan:"Ganti LCD atau cek IC touch."
 },
 
 {
 judul:"HP Cepat Panas",
-detail:"Penyebab: IC CPU short atau aplikasi berat."
+diagnosa:"HP panas walau tidak digunakan.",
+perbaikan:"Cek IC CPU atau IC power."
 },
 
 {
-judul:"Tidak Ada Suara",
-detail:"Penyebab: speaker rusak atau IC audio rusak."
+judul:"Speaker Tidak Bunyi",
+diagnosa:"Audio tidak keluar.",
+perbaikan:"Ganti speaker atau cek IC audio."
 },
 
 {
 judul:"Mic Tidak Berfungsi",
-detail:"Penyebab: mic rusak atau jalur audio putus."
+diagnosa:"Suara tidak terdengar saat telepon.",
+perbaikan:"Ganti mic atau cek jalur audio."
 },
 
 {
-judul:"Kamera Tidak Bisa Dibuka",
-detail:"Penyebab: modul kamera rusak atau firmware error."
+judul:"Kamera Error",
+diagnosa:"Camera failed.",
+perbaikan:"Ganti modul kamera."
 },
 
 {
-judul:"HP Tidak Bisa Masuk Jaringan 4G",
-detail:"Penyebab: baseband error atau setting jaringan salah."
+judul:"Fingerprint Error",
+diagnosa:"Fingerprint tidak terdeteksi.",
+perbaikan:"Ganti sensor fingerprint."
 },
 
 {
-judul:"Fingerprint Tidak Berfungsi",
-detail:"Penyebab: sensor fingerprint rusak atau fleksibel putus."
+judul:"Tidak Bisa Masuk Recovery",
+diagnosa:"Tombol tidak berfungsi.",
+perbaikan:"Cek fleksibel tombol."
 },
 
 {
-judul:"HP Tidak Bisa Nyala Tapi Terbaca PC",
-detail:"Penyebab: sistem crash. Solusi: flash firmware."
+judul:"HP Tidak Terbaca PC",
+diagnosa:"USB tidak terdeteksi.",
+perbaikan:"Ganti konektor USB."
+},
+
+{
+judul:"HP Restart Sendiri",
+diagnosa:"Restart saat digunakan.",
+perbaikan:"Ganti baterai atau cek IC power."
+},
+
+{
+judul:"Storage Tidak Terbaca",
+diagnosa:"Internal memory error.",
+perbaikan:"Reball atau ganti eMMC."
+},
+
+{
+judul:"GPS Tidak Berfungsi",
+diagnosa:"Lokasi tidak akurat.",
+perbaikan:"Cek antena GPS."
 }
 
 ];
@@ -148,15 +199,21 @@ function render(list){
 const container=document.getElementById("list");
 container.innerHTML="";
 
-list.forEach(k=>{
+list.forEach(r=>{
 
 container.innerHTML+=`
 
 <div class="card">
 
-<div class="judul">${k.judul}</div>
+<div class="judul">${r.judul}</div>
 
-<div class="detail">${k.detail}</div>
+<div class="diagnosa">
+Diagnosa: ${r.diagnosa}
+</div>
+
+<div class="perbaikan">
+Perbaikan: ${r.perbaikan}
+</div>
 
 </div>
 
@@ -166,13 +223,13 @@ container.innerHTML+=`
 
 }
 
-render(kerusakan);
+render(repair);
 
 document.getElementById("search").addEventListener("keyup",function(){
 
 let q=this.value.toLowerCase();
 
-let result=kerusakan.filter(k=>k.judul.toLowerCase().includes(q));
+let result=repair.filter(r=>r.judul.toLowerCase().includes(q));
 
 render(result);
 
