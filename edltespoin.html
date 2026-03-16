@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>EDL Test Point Xiaomi PRO</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:14px;
+margin-bottom:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.model{
+font-weight:bold;
+font-size:16px;
+}
+
+.desc{
+font-size:13px;
+color:#555;
+margin-top:4px;
+}
+
+.btn{
+display:inline-block;
+margin-top:8px;
+background:#ff6900;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+font-size:12px;
+text-decoration:none;
+}
+
+</style></head><body><div class="header">
+EDL Test Point Xiaomi PRO
+</div><div class="search">
+<input type="text" id="search" placeholder="Cari tipe Xiaomi...">
+</div><div class="container" id="list"></div><script>
+
+const edl=[
+
+{model:"Redmi Note 13 Pro"},
+{model:"Redmi Note 13"},
+{model:"Redmi Note 12"},
+{model:"Redmi Note 12 Pro"},
+{model:"Redmi Note 11"},
+{model:"Redmi Note 11 Pro"},
+{model:"Redmi Note 10"},
+{model:"Redmi Note 10 Pro"},
+{model:"Redmi Note 9"},
+{model:"Redmi Note 9 Pro"},
+{model:"Redmi Note 9S"},
+{model:"Redmi Note 8"},
+{model:"Redmi Note 8 Pro"},
+{model:"Redmi Note 7"},
+
+{model:"Redmi 12"},
+{model:"Redmi 11"},
+{model:"Redmi 10"},
+{model:"Redmi 10C"},
+{model:"Redmi 10A"},
+{model:"Redmi 9"},
+{model:"Redmi 9A"},
+{model:"Redmi 9C"},
+{model:"Redmi 8"},
+{model:"Redmi 8A"},
+
+{model:"Poco X6 Pro"},
+{model:"Poco X6"},
+{model:"Poco X5 Pro"},
+{model:"Poco X5"},
+{model:"Poco X4 Pro"},
+{model:"Poco X3 Pro"},
+{model:"Poco X3 NFC"},
+{model:"Poco X3 GT"},
+
+{model:"Poco F5"},
+{model:"Poco F4"},
+{model:"Poco F3"},
+{model:"Poco F2 Pro"},
+{model:"Poco F1"},
+
+{model:"Redmi K60"},
+{model:"Redmi K50"},
+{model:"Redmi K40"},
+{model:"Redmi K30"},
+{model:"Redmi K20"},
+
+{model:"Xiaomi 14"},
+{model:"Xiaomi 13"},
+{model:"Xiaomi 12"},
+{model:"Xiaomi 11"},
+{model:"Xiaomi 11T"},
+{model:"Xiaomi Mi 10"},
+{model:"Xiaomi Mi 9"}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(e=>{
+
+let query=e.model.replace(/ /g,"+")+"+edl+test+point";
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="model">${e.model}</div>
+
+<div class="desc">
+Klik tombol untuk melihat lokasi test point motherboard
+</div>
+
+<a class="btn" target="_blank"
+href="https://www.google.com/search?q=${query}&tbm=isch">
+
+📷 Lihat Test Point
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(edl);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=edl.filter(e=>e.model.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script></body>
+</html>
