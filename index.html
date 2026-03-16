@@ -75,7 +75,8 @@ padding:20px;
 .grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:15px;
+gap:18px;
+padding:10px;
 }
 /* BRAND */
 
@@ -119,6 +120,18 @@ color:white;
 }
 .brand span{
 font-size:28px;
+}
+@media (min-width:900px){
+
+.grid{
+grid-template-columns:repeat(6,1fr);
+}
+
+.brand{
+padding:20px;
+font-size:16px;
+}
+
 }
 /* FOOTER */
 
