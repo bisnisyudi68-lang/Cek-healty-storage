@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spesifikasi HP Samsung</title>
+
+<style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#0d6efd;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:15px;
+margin-bottom:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.nama{
+font-weight:bold;
+font-size:16px;
+}
+
+.spec{
+font-size:13px;
+color:#555;
+margin-top:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Spesifikasi HP Samsung
+</div>
+
+<div class="search">
+<input type="text" id="search" placeholder="Cari tipe Samsung...">
+</div>
+
+<div class="container" id="list"></div>
+
+<script>
+
+const phones = [
+
+/* S SERIES */
+
+{model:"Galaxy S6",chip:"Exynos 7420",ram:"3GB",kamera:"16MP",layar:"5.1 AMOLED"},
+{model:"Galaxy S6 Edge",chip:"Exynos 7420",ram:"3GB",kamera:"16MP",layar:"5.1 AMOLED"},
+{model:"Galaxy S6 Edge+",chip:"Exynos 7420",ram:"4GB",kamera:"16MP",layar:"5.7 AMOLED"},
+
+{model:"Galaxy S7",chip:"Exynos 8890",ram:"4GB",kamera:"12MP",layar:"5.1 AMOLED"},
+{model:"Galaxy S7 Edge",chip:"Exynos 8890",ram:"4GB",kamera:"12MP",layar:"5.5 AMOLED"},
+
+{model:"Galaxy S8",chip:"Exynos 8895",ram:"4GB",kamera:"12MP",layar:"5.8 AMOLED"},
+{model:"Galaxy S8+",chip:"Exynos 8895",ram:"4GB",kamera:"12MP",layar:"6.2 AMOLED"},
+
+{model:"Galaxy S9",chip:"Exynos 9810",ram:"4GB",kamera:"12MP",layar:"5.8 AMOLED"},
+{model:"Galaxy S9+",chip:"Exynos 9810",ram:"6GB",kamera:"12MP",layar:"6.2 AMOLED"},
+
+{model:"Galaxy S10",chip:"Exynos 9820",ram:"8GB",kamera:"16MP",layar:"6.1 AMOLED"},
+{model:"Galaxy S10e",chip:"Exynos 9820",ram:"6GB",kamera:"16MP",layar:"5.8 AMOLED"},
+{model:"Galaxy S10+",chip:"Exynos 9820",ram:"8GB",kamera:"16MP",layar:"6.4 AMOLED"},
+
+{model:"Galaxy S20",chip:"Exynos 990",ram:"8GB",kamera:"64MP",layar:"6.2 AMOLED"},
+{model:"Galaxy S20+",chip:"Exynos 990",ram:"8GB",kamera:"64MP",layar:"6.7 AMOLED"},
+{model:"Galaxy S20 Ultra",chip:"Exynos 990",ram:"12GB",kamera:"108MP",layar:"6.9 AMOLED"},
+
+{model:"Galaxy S21",chip:"Exynos 2100",ram:"8GB",kamera:"64MP",layar:"6.2 AMOLED"},
+{model:"Galaxy S21+",chip:"Exynos 2100",ram:"8GB",kamera:"64MP",layar:"6.7 AMOLED"},
+{model:"Galaxy S21 Ultra",chip:"Exynos 2100",ram:"12GB",kamera:"108MP",layar:"6.8 AMOLED"},
+
+{model:"Galaxy S22",chip:"Snapdragon 8 Gen1",ram:"8GB",kamera:"50MP",layar:"6.1 AMOLED"},
+{model:"Galaxy S22+",chip:"Snapdragon 8 Gen1",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"},
+{model:"Galaxy S22 Ultra",chip:"Snapdragon 8 Gen1",ram:"12GB",kamera:"108MP",layar:"6.8 AMOLED"},
+
+{model:"Galaxy S23",chip:"Snapdragon 8 Gen2",ram:"8GB",kamera:"50MP",layar:"6.1 AMOLED"},
+{model:"Galaxy S23+",chip:"Snapdragon 8 Gen2",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"},
+{model:"Galaxy S23 Ultra",chip:"Snapdragon 8 Gen2",ram:"12GB",kamera:"200MP",layar:"6.8 AMOLED"},
+
+{model:"Galaxy S24",chip:"Snapdragon 8 Gen3",ram:"8GB",kamera:"50MP",layar:"6.2 AMOLED"},
+{model:"Galaxy S24+",chip:"Exynos 2400",ram:"12GB",kamera:"50MP",layar:"6.7 AMOLED"},
+{model:"Galaxy S24 Ultra",chip:"Snapdragon 8 Gen3",ram:"12GB",kamera:"200MP",layar:"6.8 AMOLED"},
+
+/* NOTE SERIES */
+
+{model:"Galaxy Note 5",chip:"Exynos 7420",ram:"4GB",kamera:"16MP",layar:"5.7 AMOLED"},
+{model:"Galaxy Note 8",chip:"Exynos 8895",ram:"6GB",kamera:"12MP",layar:"6.3 AMOLED"},
+{model:"Galaxy Note 9",chip:"Exynos 9810",ram:"6GB",kamera:"12MP",layar:"6.4 AMOLED"},
+{model:"Galaxy Note 10",chip:"Exynos 9825",ram:"8GB",kamera:"12MP",layar:"6.3 AMOLED"},
+{model:"Galaxy Note 10+",chip:"Exynos 9825",ram:"12GB",kamera:"12MP",layar:"6.8 AMOLED"},
+{model:"Galaxy Note 20",chip:"Exynos 990",ram:"8GB",kamera:"64MP",layar:"6.7 AMOLED"},
+{model:"Galaxy Note 20 Ultra",chip:"Exynos 990",ram:"12GB",kamera:"108MP",layar:"6.9 AMOLED"},
+
+/* A SERIES */
+
+{model:"Galaxy A02",chip:"MT6739",ram:"3GB",kamera:"13MP",layar:"6.5 LCD"},
+{model:"Galaxy A02s",chip:"Snapdragon 450",ram:"4GB",kamera:"13MP",layar:"6.5 LCD"},
+{model:"Galaxy A03",chip:"Unisoc T606",ram:"4GB",kamera:"48MP",layar:"6.5 LCD"},
+{model:"Galaxy A03 Core",chip:"SC9863A",ram:"2GB",kamera:"8MP",layar:"6.5 LCD"},
+{model:"Galaxy A03s",chip:"Helio P35",ram:"4GB",kamera:"13MP",layar:"6.5 LCD"},
+
+{model:"Galaxy A04",chip:"Helio P35",ram:"4GB",kamera:"50MP",layar:"6.5 LCD"},
+{model:"Galaxy A04e",chip:"Helio P35",ram:"3GB",kamera:"13MP",layar:"6.5 LCD"},
+{model:"Galaxy A04s",chip:"Exynos 850",ram:"4GB",kamera:"50MP",layar:"6.5 LCD"},
+
+{model:"Galaxy A05",chip:"Helio G85",ram:"6GB",kamera:"50MP",layar:"6.7 LCD"},
+{model:"Galaxy A05s",chip:"Snapdragon 680",ram:"6GB",kamera:"50MP",layar:"6.7 LCD"},
+
+{model:"Galaxy A10",chip:"Exynos 7884",ram:"2GB",kamera:"13MP",layar:"6.2 LCD"},
+{model:"Galaxy A10s",chip:"Helio P22",ram:"2GB",kamera:"13MP",layar:"6.2 LCD"},
+
+{model:"Galaxy A11",chip:"Snapdragon 450",ram:"3GB",kamera:"13MP",layar:"6.4 LCD"},
+{model:"Galaxy A12",chip:"Helio P35",ram:"4GB",kamera:"48MP",layar:"6.5 LCD"},
+{model:"Galaxy A13",chip:"Exynos 850",ram:"4GB",kamera:"50MP",layar:"6.6 LCD"},
+{model:"Galaxy A14",chip:"Exynos 850",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+{model:"Galaxy A15",chip:"Helio G99",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+
+{model:"Galaxy A20",chip:"Exynos 7884",ram:"3GB",kamera:"13MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A21",chip:"Helio P35",ram:"4GB",kamera:"16MP",layar:"6.5 LCD"},
+{model:"Galaxy A22",chip:"Helio G80",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A23",chip:"Snapdragon 680",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+{model:"Galaxy A24",chip:"Helio G99",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A25",chip:"Exynos 1280",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+
+{model:"Galaxy A30",chip:"Exynos 7904",ram:"4GB",kamera:"16MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A30s",chip:"Exynos 7904",ram:"4GB",kamera:"25MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A31",chip:"Helio P65",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A32",chip:"Helio G80",ram:"8GB",kamera:"64MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A33",chip:"Exynos 1280",ram:"8GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A34",chip:"Dimensity 1080",ram:"8GB",kamera:"48MP",layar:"6.6 AMOLED"},
+{model:"Galaxy A35",chip:"Exynos 1380",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"},
+
+{model:"Galaxy A50",chip:"Exynos 9610",ram:"6GB",kamera:"25MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A50s",chip:"Exynos 9611",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A51",chip:"Exynos 9611",ram:"8GB",kamera:"48MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A52",chip:"Snapdragon 720G",ram:"8GB",kamera:"64MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A52s",chip:"Snapdragon 778G",ram:"8GB",kamera:"64MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A53",chip:"Exynos 1280",ram:"8GB",kamera:"64MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A54",chip:"Exynos 1380",ram:"8GB",kamera:"50MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A55",chip:"Exynos 1480",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"},
+
+/* M SERIES */
+
+{model:"Galaxy M10",chip:"Exynos 7870",ram:"3GB",kamera:"13MP",layar:"6.2 LCD"},
+{model:"Galaxy M11",chip:"Snapdragon 450",ram:"4GB",kamera:"13MP",layar:"6.4 LCD"},
+{model:"Galaxy M12",chip:"Exynos 850",ram:"6GB",kamera:"48MP",layar:"6.5 LCD"},
+{model:"Galaxy M13",chip:"Exynos 850",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+{model:"Galaxy M14",chip:"Exynos 1330",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+
+{model:"Galaxy M20",chip:"Exynos 7904",ram:"4GB",kamera:"13MP",layar:"6.3 LCD"},
+{model:"Galaxy M21",chip:"Exynos 9611",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy M22",chip:"Helio G80",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+{model:"Galaxy M23",chip:"Snapdragon 750G",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+{model:"Galaxy M24",chip:"Helio G99",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"}, 
+{model:"Galaxy S24 Ultra",chip:"Snapdragon 8 Gen3",ram:"12GB",kamera:"200MP",layar:"6.8 AMOLED"},
+{model:"Galaxy S23 Ultra",chip:"Snapdragon 8 Gen2",ram:"12GB",kamera:"200MP",layar:"6.8 AMOLED"},
+{model:"Galaxy S22 Ultra",chip:"Snapdragon 8 Gen1",ram:"12GB",kamera:"108MP",layar:"6.8 AMOLED"},
+
+{model:"Galaxy A55",chip:"Exynos 1480",ram:"8GB",kamera:"50MP",layar:"6.6 AMOLED"},
+{model:"Galaxy A54",chip:"Exynos 1380",ram:"8GB",kamera:"50MP",layar:"6.4 AMOLED"},
+{model:"Galaxy A53",chip:"Exynos 1280",ram:"8GB",kamera:"64MP",layar:"6.5 AMOLED"},
+
+{model:"Galaxy A34",chip:"Dimensity 1080",ram:"8GB",kamera:"48MP",layar:"6.6 AMOLED"},
+{model:"Galaxy A33",chip:"Exynos 1280",ram:"6GB",kamera:"48MP",layar:"6.4 AMOLED"},
+
+{model:"Galaxy A25",chip:"Exynos 1280",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A24",chip:"Helio G99",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+
+{model:"Galaxy A15",chip:"Helio G99",ram:"8GB",kamera:"50MP",layar:"6.5 AMOLED"},
+{model:"Galaxy A14",chip:"Exynos 850",ram:"6GB",kamera:"50MP",layar:"6.6 LCD"},
+
+{model:"Galaxy M55",chip:"Snapdragon 7 Gen1",ram:"8GB",kamera:"50MP",layar:"6.7 AMOLED"},
+{model:"Galaxy M54",chip:"Exynos 1380",ram:"8GB",kamera:"108MP",layar:"6.7 AMOLED"},
+
+{model:"Galaxy Z Fold5",chip:"Snapdragon 8 Gen2",ram:"12GB",kamera:"50MP",layar:"7.6 AMOLED"},
+{model:"Galaxy Z Flip5",chip:"Snapdragon 8 Gen2",ram:"8GB",kamera:"12MP",layar:"6.7 AMOLED"}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(p=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="nama">${p.model}</div>
+
+<div class="spec">
+Chipset : ${p.chip}
+</div>
+
+<div class="spec">
+RAM : ${p.ram}
+</div>
+
+<div class="spec">
+Kamera : ${p.kamera}
+</div>
+
+<div class="spec">
+Layar : ${p.layar}
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(phones);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=phones.filter(p=>p.model.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script>
+
+</body>
+</html>
