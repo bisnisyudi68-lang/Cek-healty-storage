@@ -33,26 +33,25 @@ padding:20px;
 background:white;
 border-radius:12px;
 padding:15px;
-margin-bottom:15px;
+margin-bottom:12px;
 box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .judul{
 font-weight:bold;
 font-size:16px;
-margin-bottom:6px;
 }
 
 .penyebab{
-color:#e53935;
-font-size:14px;
-margin-top:5px;
+color:#d32f2f;
+font-size:13px;
+margin-top:4px;
 }
 
 .solusi{
 color:#2e7d32;
-font-size:14px;
-margin-top:5px;
+font-size:13px;
+margin-top:4px;
 }
 
 </style>
@@ -68,83 +67,183 @@ Analisa Kerusakan Samsung
 <div class="container">
 
 <div class="card">
-<div class="judul">HP Mati Total</div>
-<div class="penyebab">
-Penyebab: IC Power rusak, baterai drop, short di jalur power
-</div>
-<div class="solusi">
-Solusi: cek baterai, cek jalur power, ukur arus dengan power supply
-</div>
+<div class="judul">1. HP Mati Total</div>
+<div class="penyebab">Penyebab: IC Power rusak, baterai drop, short motherboard</div>
+<div class="solusi">Solusi: cek arus PSU, cek jalur power, ganti IC power</div>
 </div>
 
 <div class="card">
-<div class="judul">HP Tidak Bisa Di Cas</div>
-<div class="penyebab">
-Penyebab: konektor charger rusak, IC charging rusak, kabel fleksibel rusak
-</div>
-<div class="solusi">
-Solusi: ganti konektor charger, cek jalur charging, cek IC charger
-</div>
+<div class="judul">2. Tidak Bisa Di Cas</div>
+<div class="penyebab">Penyebab: konektor charger rusak, IC charging rusak</div>
+<div class="solusi">Solusi: ganti konektor charger, cek jalur VBUS</div>
 </div>
 
 <div class="card">
-<div class="judul">Bootloop / Restart Terus</div>
-<div class="penyebab">
-Penyebab: sistem rusak, firmware corrupt, memori eMMC error
-</div>
-<div class="solusi">
-Solusi: flash firmware ulang, wipe data, cek eMMC
-</div>
+<div class="judul">3. Bootloop</div>
+<div class="penyebab">Penyebab: sistem rusak, firmware corrupt</div>
+<div class="solusi">Solusi: flash firmware ulang</div>
 </div>
 
 <div class="card">
-<div class="judul">Sinyal Hilang</div>
-<div class="penyebab">
-Penyebab: IC RF rusak, baseband hilang, antena putus
-</div>
-<div class="solusi">
-Solusi: cek IMEI, flash firmware modem, cek jalur antena
-</div>
+<div class="judul">4. Sinyal Hilang</div>
+<div class="penyebab">Penyebab: baseband rusak, antena putus</div>
+<div class="solusi">Solusi: cek IMEI, flash modem, cek jalur RF</div>
 </div>
 
 <div class="card">
-<div class="judul">Layar Tidak Menyala</div>
-<div class="penyebab">
-Penyebab: LCD rusak, fleksibel LCD putus, IC display rusak
-</div>
-<div class="solusi">
-Solusi: tes dengan LCD baru, cek konektor LCD
-</div>
+<div class="judul">5. Wifi Tidak Aktif</div>
+<div class="penyebab">Penyebab: IC wifi rusak</div>
+<div class="solusi">Solusi: reset network atau reball IC wifi</div>
 </div>
 
 <div class="card">
-<div class="judul">Wifi Tidak Bisa Aktif</div>
-<div class="penyebab">
-Penyebab: IC wifi rusak, firmware error
-</div>
-<div class="solusi">
-Solusi: reset network, flash firmware, cek IC wifi
-</div>
+<div class="judul">6. Bluetooth Tidak Aktif</div>
+<div class="penyebab">Penyebab: IC combo wifi rusak</div>
+<div class="solusi">Solusi: cek IC wifi/bluetooth</div>
 </div>
 
 <div class="card">
-<div class="judul">Tidak Ada Suara</div>
-<div class="penyebab">
-Penyebab: speaker rusak, IC audio rusak
-</div>
-<div class="solusi">
-Solusi: ganti speaker, cek jalur audio
-</div>
+<div class="judul">7. Tidak Ada Suara</div>
+<div class="penyebab">Penyebab: speaker rusak atau IC audio rusak</div>
+<div class="solusi">Solusi: ganti speaker</div>
 </div>
 
 <div class="card">
-<div class="judul">Touchscreen Tidak Berfungsi</div>
-<div class="penyebab">
-Penyebab: digitizer rusak, IC touch rusak
+<div class="judul">8. Mic Tidak Berfungsi</div>
+<div class="penyebab">Penyebab: mic rusak atau jalur mic putus</div>
+<div class="solusi">Solusi: ganti mic</div>
 </div>
-<div class="solusi">
-Solusi: ganti LCD, cek konektor touch
+
+<div class="card">
+<div class="judul">9. Layar Blank</div>
+<div class="penyebab">Penyebab: LCD rusak</div>
+<div class="solusi">Solusi: ganti LCD</div>
 </div>
+
+<div class="card">
+<div class="judul">10. Touchscreen Tidak Berfungsi</div>
+<div class="penyebab">Penyebab: digitizer rusak</div>
+<div class="solusi">Solusi: ganti LCD</div>
+</div>
+
+<div class="card">
+<div class="judul">11. HP Panas Berlebihan</div>
+<div class="penyebab">Penyebab: short IC atau CPU bekerja berat</div>
+<div class="solusi">Solusi: cek IC power</div>
+</div>
+
+<div class="card">
+<div class="judul">12. Kamera Tidak Bisa Dibuka</div>
+<div class="penyebab">Penyebab: kamera rusak atau driver error</div>
+<div class="solusi">Solusi: ganti kamera</div>
+</div>
+
+<div class="card">
+<div class="judul">13. Sensor Tidak Berfungsi</div>
+<div class="penyebab">Penyebab: sensor proximity rusak</div>
+<div class="solusi">Solusi: ganti sensor</div>
+</div>
+
+<div class="card">
+<div class="judul">14. Fingerprint Tidak Terbaca</div>
+<div class="penyebab">Penyebab: sensor fingerprint rusak</div>
+<div class="solusi">Solusi: ganti fingerprint</div>
+</div>
+
+<div class="card">
+<div class="judul">15. HP Tidak Bisa Masuk Recovery</div>
+<div class="penyebab">Penyebab: tombol rusak atau firmware error</div>
+<div class="solusi">Solusi: flash firmware</div>
+</div>
+
+<div class="card">
+<div class="judul">16. Storage Tidak Terbaca</div>
+<div class="penyebab">Penyebab: eMMC rusak</div>
+<div class="solusi">Solusi: reprogram eMMC</div>
+</div>
+
+<div class="card">
+<div class="judul">17. HP Restart Sendiri</div>
+<div class="penyebab">Penyebab: baterai drop</div>
+<div class="solusi">Solusi: ganti baterai</div>
+</div>
+
+<div class="card">
+<div class="judul">18. HP Lambat</div>
+<div class="penyebab">Penyebab: memori penuh</div>
+<div class="solusi">Solusi: reset pabrik</div>
+</div>
+
+<div class="card">
+<div class="judul">19. GPS Tidak Akurat</div>
+<div class="penyebab">Penyebab: antena GPS rusak</div>
+<div class="solusi">Solusi: cek antena</div>
+</div>
+
+<div class="card">
+<div class="judul">20. Tidak Bisa SIM Card</div>
+<div class="penyebab">Penyebab: slot SIM rusak</div>
+<div class="solusi">Solusi: ganti slot SIM</div>
+</div>
+
+<div class="card">
+<div class="judul">21. HP Tidak Bisa Power On</div>
+<div class="penyebab">Penyebab: tombol power rusak</div>
+<div class="solusi">Solusi: ganti fleksibel power</div>
+</div>
+
+<div class="card">
+<div class="judul">22. Getar Tidak Berfungsi</div>
+<div class="penyebab">Penyebab: motor vibrator rusak</div>
+<div class="solusi">Solusi: ganti vibrator</div>
+</div>
+
+<div class="card">
+<div class="judul">23. Speaker Kecil</div>
+<div class="penyebab">Penyebab: speaker kotor</div>
+<div class="solusi">Solusi: bersihkan atau ganti speaker</div>
+</div>
+
+<div class="card">
+<div class="judul">24. HP Tidak Terbaca PC</div>
+<div class="penyebab">Penyebab: konektor USB rusak</div>
+<div class="solusi">Solusi: ganti konektor USB</div>
+</div>
+
+<div class="card">
+<div class="judul">25. IMEI Hilang</div>
+<div class="penyebab">Penyebab: baseband error</div>
+<div class="solusi">Solusi: repair IMEI</div>
+</div>
+
+<div class="card">
+<div class="judul">26. HP Tidak Bisa Update</div>
+<div class="penyebab">Penyebab: firmware tidak cocok</div>
+<div class="solusi">Solusi: flash firmware resmi</div>
+</div>
+
+<div class="card">
+<div class="judul">27. HP Stuck Logo</div>
+<div class="penyebab">Penyebab: sistem rusak</div>
+<div class="solusi">Solusi: flash ulang</div>
+</div>
+
+<div class="card">
+<div class="judul">28. HP Tidak Bisa Internet</div>
+<div class="penyebab">Penyebab: APN salah</div>
+<div class="solusi">Solusi: setting APN</div>
+</div>
+
+<div class="card">
+<div class="judul">29. Kamera Blur</div>
+<div class="penyebab">Penyebab: lensa kotor</div>
+<div class="solusi">Solusi: bersihkan kamera</div>
+</div>
+
+<div class="card">
+<div class="judul">30. HP Tidak Bisa Ngecas Cepat</div>
+<div class="penyebab">Penyebab: charger tidak support</div>
+<div class="solusi">Solusi: gunakan charger original</div>
 </div>
 
 </div>
