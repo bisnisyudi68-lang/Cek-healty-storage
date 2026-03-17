@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Unlock Bootloader Xiaomi PRO+</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+padding:14px;
+border-radius:10px;
+margin-bottom:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.title{
+font-weight:bold;
+font-size:16px;
+color:#ff6900;
+}
+
+.row{
+font-size:13px;
+margin-top:4px;
+}
+
+.label{
+font-weight:bold;
+}
+
+</style></head><body><div class="header">
+Unlock Bootloader Xiaomi (PRO+)
+</div><div class="search">
+<input type="text" id="search" placeholder="Cari masalah unlock...">
+</div><div class="container" id="list"></div><script>
+
+const data=[
+
+{
+judul:"Cara Unlock Bootloader Xiaomi",
+penyebab:"Bootloader masih terkunci",
+solusi:"Login Mi Account, aktifkan OEM Unlock, gunakan Mi Unlock Tool"
+},
+
+{
+judul:"Unlock Bootloader Ditolak",
+penyebab:"Akun belum diizinkan unlock",
+solusi:"Request unlock di situs Xiaomi dan tunggu izin"
+},
+
+{
+judul:"Waiting 168 Hours",
+penyebab:"Sistem keamanan Xiaomi",
+solusi:"Tunggu waktu unlock selesai"
+},
+
+{
+judul:"Mi Unlock Error 10008",
+penyebab:"Akun belum terverifikasi",
+solusi:"Logout login ulang Mi Account"
+},
+
+{
+judul:"Mi Unlock Error 86006",
+penyebab:"Perangkat tidak terhubung ke akun",
+solusi:"Bind device di Developer Option"
+},
+
+{
+judul:"Mi Unlock Stuck 50%",
+penyebab:"Driver tidak terinstall",
+solusi:"Install driver Xiaomi / Qualcomm"
+},
+
+{
+judul:"Mi Unlock Stuck 99%",
+penyebab:"Server Xiaomi error",
+solusi:"Coba ulang unlock"
+}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(e=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="title">${e.judul}</div>
+
+<div class="row"><span class="label">Penyebab :</span> ${e.penyebab}</div>
+
+<div class="row"><span class="label">Solusi :</span> ${e.solusi}</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(data);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=data.filter(e=>e.judul.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script></body>
+</html>
