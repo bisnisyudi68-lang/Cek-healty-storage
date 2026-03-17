@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Qualcomm Loader Xiaomi</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.chip{
+font-weight:bold;
+color:#ff6900;
+}
+
+.btn{
+display:inline-block;
+margin-top:5px;
+padding:4px 10px;
+background:#ff6900;
+color:white;
+border-radius:6px;
+font-size:12px;
+text-decoration:none;
+}
+
+</style></head><body><div class="header">
+Qualcomm Loader Xiaomi
+</div><div class="search">
+<input type="text" id="search" placeholder="Cari chipset Qualcomm...">
+</div><div class="container" id="list"></div><script>
+
+const loader=[
+
+{chip:"Snapdragon 660",loader:"prog_emmc_firehose_660.mbn"},
+{chip:"Snapdragon 665",loader:"prog_emmc_firehose_665.mbn"},
+{chip:"Snapdragon 670",loader:"prog_emmc_firehose_670.mbn"},
+{chip:"Snapdragon 675",loader:"prog_emmc_firehose_675.mbn"},
+{chip:"Snapdragon 678",loader:"prog_emmc_firehose_678.mbn"},
+{chip:"Snapdragon 710",loader:"prog_emmc_firehose_710.mbn"},
+{chip:"Snapdragon 720G",loader:"prog_emmc_firehose_720g.mbn"},
+{chip:"Snapdragon 730",loader:"prog_emmc_firehose_730.mbn"},
+{chip:"Snapdragon 732G",loader:"prog_emmc_firehose_732g.mbn"},
+{chip:"Snapdragon 750G",loader:"prog_emmc_firehose_750g.mbn"},
+{chip:"Snapdragon 765G",loader:"prog_emmc_firehose_765g.mbn"},
+{chip:"Snapdragon 778G",loader:"prog_emmc_firehose_778g.mbn"},
+{chip:"Snapdragon 845",loader:"prog_emmc_firehose_845.mbn"},
+{chip:"Snapdragon 855",loader:"prog_emmc_firehose_855.mbn"},
+{chip:"Snapdragon 860",loader:"prog_emmc_firehose_860.mbn"},
+{chip:"Snapdragon 865",loader:"prog_emmc_firehose_865.mbn"},
+{chip:"Snapdragon 870",loader:"prog_emmc_firehose_870.mbn"},
+{chip:"Snapdragon 888",loader:"prog_emmc_firehose_888.mbn"},
+{chip:"Snapdragon 8 Gen1",loader:"prog_emmc_firehose_8gen1.mbn"},
+{chip:"Snapdragon 8 Gen2",loader:"prog_emmc_firehose_8gen2.mbn"}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(p=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="chip">${p.chip}</div>
+
+<div>${p.loader}</div>
+
+<a class="btn" target="_blank"
+href="https://www.google.com/search?q=${p.loader}+download">
+Cari Loader
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(loader);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=loader.filter(p=>p.chip.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script></body>
+</html>
