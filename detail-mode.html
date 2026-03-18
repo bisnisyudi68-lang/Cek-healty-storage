@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Mode Xiaomi</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-weight:bold;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.title{
+font-size:18px;
+font-weight:bold;
+color:#ff6900;
+}
+
+.row{
+margin-top:8px;
+font-size:14px;
+}
+
+.code{
+background:#eee;
+padding:5px;
+border-radius:6px;
+display:inline-block;
+margin-top:5px;
+}
+
+.btn{
+display:inline-block;
+margin-top:10px;
+background:#ff6900;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+text-decoration:none;
+font-size:13px;
+}
+
+</style></head><body><div class="header">Detail Mode Xiaomi</div><div class="container">
+<div class="card" id="detail"></div>
+</div><script>
+
+const data={
+
+"Fastboot Mode":{
+fungsi:"Flashing firmware via fastboot",
+cara:"Matikan HP → Volume Down + Power",
+langkah:"Hubungkan ke PC → buka MiFlash → flash ROM",
+kode:"fastboot devices"
+},
+
+"Recovery Mode":{
+fungsi:"Reset / update OTA",
+cara:"Volume Up + Power",
+langkah:"Pilih wipe data atau update",
+kode:"apply update"
+},
+
+"EDL Mode (9008)":{
+fungsi:"Unbrick / bypass akun",
+cara:"Test point atau adb edl",
+langkah:"Gunakan MiFlash + auth",
+kode:"adb reboot edl"
+},
+
+"ADB Mode":{
+fungsi:"Debugging HP",
+cara:"Aktifkan USB Debugging",
+langkah:"Hubungkan ke PC → jalankan command",
+kode:"adb devices"
+}
+
+};
+
+function getParam(name){
+const url=new URLSearchParams(window.location.search);
+return url.get(name);
+}
+
+const mode=getParam("mode");
+
+const d=data[mode];
+
+const el=document.getElementById("detail");
+
+if(d){
+
+el.innerHTML=`
+
+<div class="title">${mode}</div>
+
+<div class="row"><b>Fungsi :</b> ${d.fungsi}</div>
+<div class="row"><b>Cara Masuk :</b> ${d.cara}</div>
+<div class="row"><b>Langkah :</b> ${d.langkah}</div>
+
+<div class="row"><b>Command :</b></div>
+<div class="code">${d.kode}</div>
+
+<br>
+
+<a class="btn" target="_blank"
+href="https://www.google.com/search?q=${mode}+xiaomi+tutorial">
+Cari Tutorial Lengkap
+</a>
+
+`;
+
+}else{
+
+el.innerHTML="Data tidak ditemukan";
+
+}
+
+</script></body>
+</html>
