@@ -159,24 +159,11 @@ list.forEach(e=>{
 
 container.innerHTML+=`
 
-<div class="card">
-
-<div class="title">${e.judul}</div>
-
-<div class="row"><span class="label">Fungsi :</span> ${e.fungsi}</div>
-
-<div class="row"><span class="label">Cara Masuk :</span> ${e.cara}</div>
-
-<div class="row"><span class="label">Command :</span> <span class="code">${e.kode}</span></div>
-
-</div>
-
-`;
+<a href="detail-mode.html?mode=${encodeURIComponent(e.judul)}" style="text-decoration:none;color:black"><div class="card"><div class="title">${e.judul}</div><div class="row"><span class="label">Fungsi :</span> ${e.fungsi}</div><div class="row"><span class="label">Cara Masuk :</span> ${e.cara}</div><div class="row"><span class="label">Command :</span> <span class="code">${e.kode}</span></div></div></a>`;
 
 });
 
 }
-
 render(data);
 
 document.getElementById("search").addEventListener("keyup",function(){
