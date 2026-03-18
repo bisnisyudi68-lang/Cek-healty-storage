@@ -15,6 +15,7 @@ color:white;
 padding:18px;
 text-align:center;
 font-weight:bold;
+font-size:18px;
 }
 
 .container{
@@ -25,15 +26,16 @@ padding:20px;
 
 .card{
 background:white;
-padding:15px;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
+padding:16px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
 .title{
-font-size:18px;
+font-size:20px;
 font-weight:bold;
 color:#ff6900;
+margin-bottom:10px;
 }
 
 .row{
@@ -43,10 +45,11 @@ font-size:14px;
 
 .code{
 background:#eee;
-padding:6px;
-border-radius:6px;
-margin-top:5px;
+padding:8px;
+border-radius:8px;
+margin-top:8px;
 display:inline-block;
+font-size:13px;
 }
 
 .btn{
@@ -54,18 +57,31 @@ margin-top:10px;
 display:inline-block;
 background:#ff6900;
 color:white;
-padding:6px 12px;
-border-radius:6px;
+padding:8px 14px;
+border-radius:8px;
 font-size:13px;
 border:none;
 cursor:pointer;
+margin-right:6px;
 }
 
-</style></head><body><div class="header">Detail Mode Xiaomi</div><div class="container">
+.img{
+margin-top:15px;
+width:100%;
+border-radius:10px;
+}
+
+.success{
+color:green;
+font-size:13px;
+margin-top:5px;
+}
+
+</style></head><body><div class="header">Detail Mode Xiaomi 🔧</div><div class="container">
 <div class="card" id="detail">Loading...</div>
 </div><script>
 
-/* DATA MODE */
+/* DATABASE MODE */
 
 const data = {
 
@@ -73,51 +89,56 @@ const data = {
 fungsi:"Flashing firmware via fastboot",
 cara:"Volume Down + Power",
 langkah:"Hubungkan ke PC → buka MiFlash → flash ROM",
-kode:"fastboot devices"
+kode:"fastboot devices",
+img:"fastboot xiaomi bunny"
 },
 
 "Recovery Mode":{
 fungsi:"Wipe data / update OTA",
 cara:"Volume Up + Power",
 langkah:"Pilih wipe data atau update",
-kode:"apply update"
+kode:"apply update",
+img:"xiaomi recovery mode"
 },
 
 "EDL Mode":{
 fungsi:"Unbrick / bypass akun",
 cara:"Test point atau adb edl",
 langkah:"Gunakan MiFlash",
-kode:"adb reboot edl"
+kode:"adb reboot edl",
+img:"xiaomi edl test point"
 },
 
 "ADB Mode":{
 fungsi:"Debugging HP",
 cara:"Aktifkan USB Debugging",
 langkah:"Hubungkan ke PC",
-kode:"adb devices"
+kode:"adb devices",
+img:"adb debugging android"
 },
 
 "Test Mode":{
-fungsi:"Test hardware",
+fungsi:"Test hardware Xiaomi",
 cara:"Dial *#*#6484#*#*",
 langkah:"Cek LCD, sensor dll",
-kode:"CIT"
+kode:"CIT",
+img:"xiaomi cit test mode"
 }
 
 };
 
-/* AMBIL PARAMETER URL */
+/* AMBIL PARAMETER */
 
 function getMode(){
 const params = new URLSearchParams(window.location.search);
 return params.get("mode");
 }
 
-/* COPY */
+/* COPY TANPA ALERT */
 
 function copyText(text){
 navigator.clipboard.writeText(text);
-alert("Command disalin!");
+document.getElementById("copyInfo").innerText="✔ Command disalin";
 }
 
 /* RENDER */
@@ -141,9 +162,20 @@ el.innerHTML = `
 
 <br>
 
-<button class="btn" onclick="copyText('${d.kode}')">
-Copy Command
-</button>
+<button class="btn" onclick="copyText('${d.kode}')">Copy Command</button>
+
+<a class="btn" target="_blank"
+href="https://www.google.com/search?q=${mode}+xiaomi">
+Google</a>
+
+<a class="btn" target="_blank"
+href="https://www.youtube.com/results?search_query=${mode}+xiaomi">
+YouTube</a>
+
+<div id="copyInfo" class="success"></div>
+
+<img class="img"
+src="https://source.unsplash.com/800x400/?${d.img}">
 
 `;
 
