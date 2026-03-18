@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mode Xiaomi PRO+</title><style>
+
+body{
+font-family:Segoe UI;
+background:#f2f4f7;
+margin:0;
+}
+
+.header{
+background:#ff6900;
+color:white;
+padding:18px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+
+.search{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px 40px;
+}
+
+.card{
+background:white;
+padding:14px;
+border-radius:10px;
+margin-bottom:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.title{
+font-weight:bold;
+font-size:16px;
+color:#ff6900;
+}
+
+.row{
+font-size:13px;
+margin-top:4px;
+}
+
+.label{
+font-weight:bold;
+color:#333;
+}
+
+.code{
+background:#eee;
+padding:3px 6px;
+border-radius:6px;
+font-size:12px;
+}
+
+</style></head><body><div class="header">
+Mode Xiaomi (PRO+)
+</div><div class="search">
+<input type="text" id="search" placeholder="Cari mode Xiaomi...">
+</div><div class="container" id="list"></div><script>
+
+const data=[
+
+{
+judul:"Fastboot Mode",
+fungsi:"Flashing firmware via MiFlash / fastboot",
+cara:"Matikan HP → tekan Volume Down + Power",
+kode:"fastboot devices"
+},
+
+{
+judul:"Recovery Mode",
+fungsi:"Wipe data / update OTA",
+cara:"Matikan HP → tekan Volume Up + Power",
+kode:"apply update / wipe data"
+},
+
+{
+judul:"EDL Mode (9008)",
+fungsi:"Flashing bypass / unbrick",
+cara:"Test point atau command ADB",
+kode:"adb reboot edl"
+},
+
+{
+judul:"Safe Mode",
+fungsi:"Cek error aplikasi pihak ketiga",
+cara:"Tahan tombol power → pilih Safe Mode",
+kode:"-"
+},
+
+{
+judul:"Test Mode / CIT",
+fungsi:"Testing hardware Xiaomi",
+cara:"Dial *#*#6484#*#*",
+kode:"CIT"
+},
+
+{
+judul:"Download Mode",
+fungsi:"Mode flashing tertentu",
+cara:"ADB command",
+kode:"adb reboot edl"
+},
+
+{
+judul:"Bootloader Mode",
+fungsi:"Unlock / relock bootloader",
+cara:"Masuk fastboot lalu unlock",
+kode:"fastboot oem unlock"
+},
+
+{
+judul:"Mi Assistant Mode",
+fungsi:"Recovery via PC",
+cara:"Recovery → Connect with MiAssistant",
+kode:"Mi PC Suite"
+},
+
+{
+judul:"ADB Mode",
+fungsi:"Debugging / kirim command",
+cara:"Aktifkan USB Debugging",
+kode:"adb devices"
+},
+
+{
+judul:"Diag Mode",
+fungsi:"Perbaikan sinyal / IMEI",
+cara:"Dial atau command khusus",
+kode:"setprop sys.usb.config diag"
+}
+
+];
+
+function render(list){
+
+const container=document.getElementById("list");
+container.innerHTML="";
+
+list.forEach(e=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="title">${e.judul}</div>
+
+<div class="row"><span class="label">Fungsi :</span> ${e.fungsi}</div>
+
+<div class="row"><span class="label">Cara Masuk :</span> ${e.cara}</div>
+
+<div class="row"><span class="label">Command :</span> <span class="code">${e.kode}</span></div>
+
+</div>
+
+`;
+
+});
+
+}
+
+render(data);
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let q=this.value.toLowerCase();
+
+let result=data.filter(e=>e.judul.toLowerCase().includes(q));
+
+render(result);
+
+});
+
+</script></body>
+</html>
