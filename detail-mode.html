@@ -1,8 +1,7 @@
 <!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detail Mode Xiaomi</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Detail Mode Xiaomi</title><style>
 
 body{
 font-family:Segoe UI;
@@ -44,74 +43,93 @@ font-size:14px;
 
 .code{
 background:#eee;
-padding:5px;
+padding:6px;
 border-radius:6px;
-display:inline-block;
 margin-top:5px;
+display:inline-block;
 }
 
 .btn{
-display:inline-block;
 margin-top:10px;
+display:inline-block;
 background:#ff6900;
 color:white;
 padding:6px 12px;
 border-radius:6px;
-text-decoration:none;
 font-size:13px;
+border:none;
+cursor:pointer;
 }
 
 </style></head><body><div class="header">Detail Mode Xiaomi</div><div class="container">
-<div class="card" id="detail"></div>
+<div class="card" id="detail">Loading...</div>
 </div><script>
 
-const data={
+/* DATA MODE */
+
+const data = {
 
 "Fastboot Mode":{
 fungsi:"Flashing firmware via fastboot",
-cara:"Matikan HP → Volume Down + Power",
+cara:"Volume Down + Power",
 langkah:"Hubungkan ke PC → buka MiFlash → flash ROM",
 kode:"fastboot devices"
 },
 
 "Recovery Mode":{
-fungsi:"Reset / update OTA",
+fungsi:"Wipe data / update OTA",
 cara:"Volume Up + Power",
 langkah:"Pilih wipe data atau update",
 kode:"apply update"
 },
 
-"EDL Mode (9008)":{
+"EDL Mode":{
 fungsi:"Unbrick / bypass akun",
 cara:"Test point atau adb edl",
-langkah:"Gunakan MiFlash + auth",
+langkah:"Gunakan MiFlash",
 kode:"adb reboot edl"
 },
 
 "ADB Mode":{
 fungsi:"Debugging HP",
 cara:"Aktifkan USB Debugging",
-langkah:"Hubungkan ke PC → jalankan command",
+langkah:"Hubungkan ke PC",
 kode:"adb devices"
+},
+
+"Test Mode":{
+fungsi:"Test hardware",
+cara:"Dial *#*#6484#*#*",
+langkah:"Cek LCD, sensor dll",
+kode:"CIT"
 }
 
 };
 
-function getParam(name){
-const url=new URLSearchParams(window.location.search);
-return url.get(name);
+/* AMBIL PARAMETER URL */
+
+function getMode(){
+const params = new URLSearchParams(window.location.search);
+return params.get("mode");
 }
 
-const mode=getParam("mode");
+/* COPY */
 
-const d=data[mode];
+function copyText(text){
+navigator.clipboard.writeText(text);
+alert("Command disalin!");
+}
 
-const el=document.getElementById("detail");
+/* RENDER */
 
-if(d){
+const mode = getMode();
+const el = document.getElementById("detail");
 
-el.innerHTML=`
+if(data[mode]){
 
+const d = data[mode];
+
+el.innerHTML = `
 <div class="title">${mode}</div>
 
 <div class="row"><b>Fungsi :</b> ${d.fungsi}</div>
@@ -123,17 +141,14 @@ el.innerHTML=`
 
 <br>
 
-<a class="btn" target="_blank"
-href="https://www.google.com/search?q=${mode}+xiaomi+tutorial">
-Cari Tutorial Lengkap
-</a>
+<button class="btn" onclick="copyText('${d.kode}')">
+Copy Command
+</button>
 
 `;
 
 }else{
-
-el.innerHTML="Data tidak ditemukan";
-
+el.innerHTML = "Mode tidak ditemukan";
 }
 
 </script></body>
